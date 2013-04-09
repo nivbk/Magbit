@@ -126,7 +126,7 @@
 		<div id="fb-root"></div>
 	<fb:like show_faces="false" layout="button_count"></fb:like>
 <?php if (isset($error)): echo $error; endif; ?>
-	<h1>Welcome <?php if (isset($me)): echo $me['first_name'] . ","; else: echo "Guest"; endif; ?> to Facebook Ignited!</h1>
+	<h1>Welcome <?php var_dump($login_login); if (isset($me)): echo $me['first_name'] . ","; else: echo "Guest"; endif; ?> to Facebook Ignited!</h1>
 
 	<p>The page you are looking at is being generated dynamically by CodeIgniter &amp; the Facebook SDK.</p>
 
@@ -146,11 +146,12 @@
 	
 	<h3>View up to five of your feed's posts:</h3>
 	<p>
-	<? foreach ($last_status['data'] as $value) { if ($value['type'] == 'status') { ?>
+	<? foreach ($last_status['data'] as $value) {?> <? if ($value['type'] == 'status') { ?>
 		<code><?=$value['message'];?></code>
+		
 	<?} elseif ($value['type'] == 'link' || $value['type'] == 'photo') {?>
 		<code>You Liked a <?=ucwords($value['type'])?>:<br /><a href="<?=$value['link']?>" target="_blank"><?=$value['name']?></a></code>
-	<?}}?>
+	<? }}?>
 	</p>
 	<h3>Test out the process credit's method:</h3>
 	<form name ="place_order" id="order_form" action="#">

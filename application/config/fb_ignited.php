@@ -11,11 +11,10 @@
  * fb_auth		is the default authentications, '' is basic authentication
  * fb_upload	tells the SDK whether or not file uploads are enabled on your server.
  */
-$config['fb_appid']     = '	116410505221124';
-$config['fb_secret']    = '071332ddacef88fc49757995a7616058';
-$config['fb_canvas']    = 'https://young-brushlands-6545.herokuapp.com';
-//$config['fb_canvas']    = 'http://young-brushlands-6545.herokuapp.com/';
-$config['fb_apptype']   = 'iframe';
+$config['fb_appid']     = '327808704009277';
+$config['fb_secret']    = 'bb9f36129652497b048c70df27d7afe8';
+$config['fb_canvas']    = '127.0.0.1/index.php';
+$config['fb_apptype']   = 'connect';
 $config['fb_auth']      = '';
 $config['fb_upload']    = false;
 $config['fb_logexcept'] = true;

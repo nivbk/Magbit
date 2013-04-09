@@ -59,7 +59,7 @@ $autoload['packages'] = array();
 |
 */
 
-$autoload['libraries'] = array('fb_ignited');
+$autoload['libraries'] = array('fb_ignited', 'payments');
 
 
 /*

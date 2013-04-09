@@ -31,6 +31,9 @@ class Welcome extends CI_Controller {
 		}
 		$content_data['last_status'] = $this->fb_ignited->api('/me/feed?limit=5');
 		$content_data['fb_app'] = $this->fb_app;
+		$friends = $this->fb_ignited->api('/me/friends?fields=name,installed&uid=100001259320970');
+		var_dump($friends);
+		die();
 		$content_data['login_login'] = $this->fb_ignited->fb_login_url();
 		$this->load->view('welcome_message', $content_data);
 	}
