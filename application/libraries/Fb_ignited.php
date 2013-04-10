@@ -183,7 +183,7 @@ class Fb_ignited {
 			throw new FBIgnitedException("fb_fql() - Facebook::api() exception caught: " . $e->getMessage(), $e, $this->globals['fb_logexcept']);
 		}
 
-		return json_decode($fql_obj);
+		return json_encode($fql_obj);
 	}
 
 	public function fb_get_app($variable = "") {
