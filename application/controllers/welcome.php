@@ -31,11 +31,16 @@ class Welcome extends CI_Controller {
 		}
 		$content_data['last_status'] = $this->fb_ignited->api('/me/feed?limit=5');
 		$content_data['fb_app'] = $this->fb_app;
-		$friends = $this->fb_ignited->api('/me/friends?fields=name,installed&uid=100001259320970');
-		var_dump($friends);
-		die();
 		$content_data['login_login'] = $this->fb_ignited->fb_login_url();
+		$content_data['friends'] = $this->fb_ignited->fb_list_friends('uid',"full");
+		$content_data['picture'] = $this->fb_ignited->api('https://graph.facebook.com/100001259320970?fields=id,picture');
+		//var_dump($content_data['picture']);
+		//die();
 		$this->load->view('welcome_message', $content_data);
+
+		 
+   		
+   		
 	}
 	
 	function view_feed() {
