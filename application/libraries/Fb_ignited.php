@@ -183,7 +183,7 @@ class Fb_ignited {
 			throw new FBIgnitedException("fb_fql() - Facebook::api() exception caught: " . $e->getMessage(), $e, $this->globals['fb_logexcept']);
 		}
 
-		return json_encode($fql_obj);
+		return $fql_obj;
 	}
 
 	public function fb_get_app($variable = "") {
@@ -214,6 +214,8 @@ class Fb_ignited {
 		if ($this->userid) {
 			try {
 				$me = $this->facebook->api('/me');
+				$picture = $this->facebook->api('/me?fields=picture');
+				$me['picture'] = $picture['picture'];
 			} catch (FacebookApiException $e) {
 				throw new FBIgnitedException("fb_get_me(): ".$e->getMessage(), $e, $this->globals['fb_logexcept']);
 				return false;
