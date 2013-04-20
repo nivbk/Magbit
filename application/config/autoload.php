@@ -59,7 +59,8 @@ $autoload['packages'] = array();
 |
 */
 
-$autoload['libraries'] = array('template', 'fb_ignited', 'payments');
+$autoload['libraries'] = array('template', 'fb_ignited');
+$autoload['sparks'] = array('codeigniter-payments/0.1.6');
 
 
 /*
