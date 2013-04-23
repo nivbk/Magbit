@@ -14,7 +14,28 @@
         </script>
         <script src="../scripts/my.js">
         </script>
-        <!-- User-generated css -->
+        <script>
+        //Navigate to new event page
+        function click_new() {
+
+            $.mobile.changePage( "create", { transition: "slideup"} );
+
+        }
+
+
+        function submit_event() {
+                $.mobile.changePage( 
+                    "new_event_controller", 
+                    {   
+                        transition: "slideup", 
+                        type: "post",
+                        data: $("form#new_event").serialize() 
+                    } 
+                );
+
+
+        }
+</script>
         <style>
         </style>
         <!-- User-generated js -->

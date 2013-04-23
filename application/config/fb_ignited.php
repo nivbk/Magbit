@@ -11,14 +11,14 @@
  * fb_auth		is the default authentications, '' is basic authentication
  * fb_upload	tells the SDK whether or not file uploads are enabled on your server.
  */
-$config['fb_appid']     = '327808704009277';
-$config['fb_secret']    = 'bb9f36129652497b048c70df27d7afe8';
-$config['fb_canvas']    = '127.0.0.1/index.php';
+$config['fb_appid']     = '412533895508798';
+$config['fb_secret']    = 'cf10c435f57145118a244a3a12a356d8';
+//$config['fb_canvas']    = 'http://localhost:8888/index.php' ;
+$config['fb_canvas']    = 'http://127.0.0.1/index.php';
 $config['fb_apptype']   = 'connect';
 $config['fb_auth']      = '';
 $config['fb_upload']    = false;
 $config['fb_logexcept'] = true;
-
 /**
  * --- fb_canvas examples ---
  * iframe		your-facebook-namespace 

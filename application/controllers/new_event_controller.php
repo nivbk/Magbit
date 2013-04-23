@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Create extends CI_Controller {
+class new_event_controller extends CI_Controller {
 
 	function __construct()
 	{
@@ -39,9 +39,9 @@ class Create extends CI_Controller {
 		$content_data['picture'] = $this->fb_ignited->api('https://graph.facebook.com/100001259320970?fields=id,picture');
 		//var_dump($content_data['picture']);
 		//die();
-		$this->load->view('header', $content_data);
-		$this->load->view('create', $content_data);
-		$this->load->view('footer', $content_data);
+		$this->load->model('event');
+		$this->event->insert_into_db();
+		$this->load->view('success');//loading success view
 
 		//var_dump('TRUE');
 		//die();
@@ -66,7 +66,7 @@ class Create extends CI_Controller {
 		
 		$this->load->model('event');
 		$this->event->temp();
-		//$this->load->view('success');//loading success view
+		$this->load->view('success');//loading success view
 	
 	}
 

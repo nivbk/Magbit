@@ -1,6 +1,6 @@
 <div data-role="page" id="page1">
     <div data-theme="a" data-role="header">
-        <a data-role="button" href="#page1" class="ui-btn-right">
+        <a data-role="button" onClick="click_new();" class="ui-btn-right">
             New
         </a>
         <h3>

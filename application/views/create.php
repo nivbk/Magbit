@@ -6,36 +6,36 @@
                 </h3>
             </div>
             <div data-role="content">
-                <form action="">
+                <form id="new_event" action="" method="post">
                     <div data-role="fieldcontain">
-                        <label for="textinput1">
-                            Event title
+                        <label for="name">
+                            Event Name
                         </label>
-                        <input name="" id="textinput1" placeholder="" value="" type="text" />
+                        <input name="name" id="name" placeholder="" value="" type="text" />
                     </div>
                     <div data-role="fieldcontain">
-                        <label for="textinput2">
+                        <label for="description">
                             Description
                         </label>
-                        <input name="" id="textinput2" placeholder="" value="" type="text" />
+                        <input name="description" id="description" placeholder="" value="" type="text" />
                     </div>
                     <div data-role="fieldcontain">
-                        <label for="textinput3">
-                            When
+                        <label for="date">
+                            Date
                         </label>
-                        <input name="" id="textinput3" placeholder="" value="" type="text" />
+                        <input name="date" id="date" placeholder="" value="" type="text" />
                     </div>
                     <div data-role="fieldcontain">
-                        <label for="textinput4">
-                            Where
+                        <label for="location">
+                            Location
                         </label>
-                        <input name="" id="textinput4" placeholder="" value="" type="text" />
+                        <input name="location" id="location" placeholder="" value="" type="text" />
                     </div>
                     <div data-role="fieldcontain">
                         <label for="toggleswitch1">
                             Per User
                         </label>
-                        <select name="toggleswitch1" id="toggleswitch1" data-theme="" data-role="slider">
+                        <select name="per_user" id="toggleswitch1" data-theme="" data-role="slider">
                             <option value="off">
                                 Off
                             </option>
@@ -45,12 +45,12 @@
                         </select>
                     </div>
                     <div data-role="fieldcontain">
-                        <label for="textinput5">
-                            Amount
+                        <label for="total">
+                            Total
                         </label>
-                        <input name="" id="textinput5" placeholder="" value="" type="text" />
+                        <input name="total" id="total" placeholder="" value="" type="text" />
                     </div>
-                </form>
+               
                 <div data-role="fieldcontain">
                     <label for="searchinput1">
                         Friends list
@@ -78,6 +78,7 @@
                         </a>
                     </li>
                 </ul>
-                <input value="Create" type="submit" />
+                <input value="Create" onClick="submit_event();" type="button" />
             </div>
+             </form>
         </div>
