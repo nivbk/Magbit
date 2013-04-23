@@ -20,30 +20,35 @@
                         <input name="description" id="description" placeholder="" value="" type="text" />
                     </div>
                     <div data-role="fieldcontain">
-                        <label for="date">
-                            Date
-                        </label>
-                        <input name="date" id="date" placeholder="" value="" type="text" />
+                       <label for="date">
+                        Date
+                       </label>
+
+                    <input name="date" id="date" type="date" data-role="datebox" data-options='{"mode": "calbox", "calShowWeek": true}' />
                     </div>
+                    <div data-role="fieldcontain">
+                    <label for="time">
+                        Event Time
+                    </label>
+
+                <input name="time" id="time" type="date" data-role="datebox" placeholder="" data-options='{"mode": "timebox", "overrideTimeFormat": 12}'>
+                    </div>
+
+                 <div data-role="fieldcontain">
+                       <label for="due_date">
+                        Due Date
+                       </label>
+
+                    <input name="due_date" id="due_date" type="date" data-role="datebox" data-options='{"mode": "calbox", "calShowWeek": true}' />
+                    </div>
+
                     <div data-role="fieldcontain">
                         <label for="location">
                             Location
                         </label>
                         <input name="location" id="location" placeholder="" value="" type="text" />
                     </div>
-                    <div data-role="fieldcontain">
-                        <label for="toggleswitch1">
-                            Per User
-                        </label>
-                        <select name="per_user" id="toggleswitch1" data-theme="" data-role="slider">
-                            <option value="off">
-                                Off
-                            </option>
-                            <option value="on">
-                                On
-                            </option>
-                        </select>
-                    </div>
+                
                     <div data-role="fieldcontain">
                         <label for="total">
                             Total

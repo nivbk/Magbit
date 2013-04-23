@@ -6,23 +6,35 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <title>
         </title>
-        <link rel="stylesheet" href="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-        <link rel="stylesheet" href="../styles/my.css" />
-        <script src="https://s3.amazonaws.com/codiqa-cdn/jquery-1.7.2.min.js">
-        </script>
-        <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.js">
-        </script>
-        <script src="../scripts/my.js">
-        </script>
-        <script>
-        //Navigate to new event page
+       
+
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" />
+        <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+        <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+
+        <!-- Optional Mousewheel support: http://brandonaaron.net/code/mousewheel/docs -->
+        <script type="text/javascript" src="PATH/TO/YOUR/COPY/OF/jquery.mousewheel.min.js"></script>
+
+        <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+        <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
+        <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+        <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
+    
+        
+        
+    <script>
         function click_new() {
 
-            $.mobile.changePage( "create", { transition: "slideup"} );
+            $.mobile.changePage( "create_controller", { 
+                transition: "slideup"}
+
+             );
 
         }
-
-
+    </script>
+    <script>
         function submit_event() {
                 $.mobile.changePage( 
                     "new_event_controller", 
@@ -35,7 +47,22 @@
 
 
         }
+    </script>
+
+<script>
+        function click_home() {
+
+            $.mobile.changePage( "welcome", { 
+                transition: "slideup"}
+
+             );
+
+}
 </script>
+ 
+
+
+
         <style>
         </style>
         <!-- User-generated js -->

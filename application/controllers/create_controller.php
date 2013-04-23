@@ -1,24 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class new_event_controller extends CI_Controller {
+class create_controller extends CI_Controller {
 
 	function __construct()
 	{
 		parent::__construct();		
 		
-	
 
 	}
 
 	function index($type="")
 	{	
-		
-		$this->load->model('event');
-		$this->event->insert_into_db();
-		$this->load->view('success');
-
 	
+		$this->load->view('header');
+		$this->load->view('create');
+		$this->load->view('footer');
+
+
+		 
    		
    		
 	}
@@ -38,7 +38,7 @@ class new_event_controller extends CI_Controller {
 		
 		$this->load->model('event');
 		$this->event->temp();
-		$this->load->view('success');//loading success view
+		//$this->load->view('success');//loading success view
 	
 	}
 

@@ -21,20 +21,17 @@ class event extends CI_Model
 
 public function insert_into_db()
 	{
-		//var_dump($_POST['name']);
-		//die();
+		
 		$name = $_POST['name'];
 		$description = $_POST['description'];
 		$date = $_POST['date'];
+		$time = $_POST['time'];
+		$due_date=$_POST['due_date'];
 		$location = $_POST['location'];
-		//$per_user = $_POST[''];
 		$total = $_POST['total'];
 		return ($this->db->query("INSERT INTO events VALUES(
-			'','$name','$description','$date','$due_date','$location','$division_method','$owner','$payment','$total');"));
-/*
-		return ($this->db->set('name', 
-			$name)->set('description', $description)->set(
-			'date', $date)->set('location', '$location')->set('total','$total')->insert($this->events));*/
+			'','$name','$description','$date','$time','$due_date','$location','$owner','$payment','$total');"));
+
 
 	}
 
