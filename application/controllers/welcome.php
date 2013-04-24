@@ -56,7 +56,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message', $content_data);
 		$this->load->view('footer', $content_data);
 
-		 
+		
    		
    		
 	}
@@ -71,6 +71,8 @@ class Welcome extends CI_Controller {
 		$content_data['message'] = $this->fb_ignited->fb_process_credits();
 		$this->load->view('fb_credits_view', $content_data);
 	}
+	
+
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

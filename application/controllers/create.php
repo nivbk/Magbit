@@ -1,5 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+
 class Create extends CI_Controller {
 
 	function __construct()
@@ -17,6 +18,7 @@ class Create extends CI_Controller {
 			$requests = $this->input->get('request_ids');
 			$this->request_result = $this->fb_ignited->fb_accept_requests($requests);
 		}
+
 	}
 
 	function index($type="")
@@ -41,6 +43,9 @@ class Create extends CI_Controller {
 		$this->load->view('create', $content_data);
 		$this->load->view('footer', $content_data);
 
+		//var_dump('TRUE');
+		//die();
+
 		 
    		
    		
@@ -50,12 +55,21 @@ class Create extends CI_Controller {
 		
 	}
 	
-	function callback()
-	{
+	function callback() {
 		// This method will include the facebook credits system.
 		$content_data['message'] = $this->fb_ignited->fb_process_credits();
 		$this->load->view('fb_credits_view', $content_data);
+
 	}
+
+	function insert_to_db() {
+		
+		$this->load->model('event');
+		$this->event->temp();
+		//$this->load->view('success');//loading success view
+	
+	}
+
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
