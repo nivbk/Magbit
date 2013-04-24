@@ -55,12 +55,16 @@ class AG_Auth_model extends CI_Model
 		
 		$query = $this->db->get_where($this->user_table, array($field_name => $value));
 		
-		if($query->num_rows() <> 0)
+		$check = $query->num_rows();
+		var_dump($check);
+		die();
+
+		if($query->num_rows() > 0)
 		{
-			return FALSE;
+			return TRUE;
 		}
 		
-		return TRUE;
+		return FALSE;
 	}
 }
 

@@ -12,10 +12,16 @@ class Welcome extends CI_Controller {
 		
 		// This is a Request System I made to be used to work with Facebook Ignited.
 		// NOTE: This is not mandatory for the system to work.
-		if ($this->input->get('request_ids'))
+		if ($this->fb_me)
 		{
-			$requests = $this->input->get('request_ids');
-			$this->request_result = $this->fb_ignited->fb_accept_requests($requests);
+			$user = array(
+				'fb_id' => $this->fb_me['id'], 
+				'first_name' => $this->fb_me['first_name'],
+				'last_name' => $this->fb_me['last_name']);
+			$this->load->model('fb_requests_model');
+			if(!($this->fb_requests_model->database_user_exists($user['fb_id']))) {
+				$this->fb_requests_model->database_register($user);
+			}
 		}
 	}
 
@@ -29,6 +35,12 @@ class Welcome extends CI_Controller {
 		{
 			$content_data['me'] = $this->fb_me;
 		}
+
+		$content_data['staff'] = $this->fb_ignited->api('/me?fields=id,name,about,email,installed,friends.fields(email,installed)');
+//681226481?fields=id,name,about,email,installed,friends.fields(email,installed)
+		//var_dump($content_data['staff']);
+		//die();
+
 		$content_data['last_status'] = $this->fb_ignited->api('/me/feed?limit=5');
 		$content_data['fb_app'] = $this->fb_app;
 		$content_data['login_login'] = $this->fb_ignited->fb_login_url();
@@ -37,6 +49,9 @@ class Welcome extends CI_Controller {
 		$content_data['picture'] = $this->fb_ignited->api('https://graph.facebook.com/100001259320970?fields=id,picture');
 		//var_dump($content_data['picture']);
 		//die();
+		$params = array('' => 'ronkrasn@gmail.com', );
+		$this->payments->payment_action('paypal_paymentspro', $params, $config);
+
 		$this->load->view('header', $content_data);
 		$this->load->view('welcome_message', $content_data);
 		$this->load->view('footer', $content_data);

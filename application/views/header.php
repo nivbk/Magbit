@@ -33,4 +33,5 @@
 </head>
 <body>
 	<h1>CodeIgniter 2 Tutorial</h1>
+    <div class="content">
 	
