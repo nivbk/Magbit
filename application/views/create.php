@@ -63,24 +63,45 @@
                     <!--<input name="" id="searchinput1" placeholder="" value="Add friend " data-mini="true" type="search" />-->
                 </div>
                 <!--<select name="friends" id="friends" data-native-menu="false" data-mini="true" multiple="multiple">-->
-                <ul data-role="listview" data-divider-theme="b" data-filter="true" data-filter-placeholder="Search a friend">
+                <script>
+                $('li.friend').live('vclick', function(event) {
+                    event.preventDefault();
+                    var checkboxId = 'check-'+$(this).data('friend-id');
+                    var spanId = 'span-'+$(this).data('friend-id');
+                    if (document.getElementById(checkboxId).checked) {
+                        document.getElementById(checkboxId).checked = false;
+                        $("#"+spanId).removeClass("invited")
+                        $("#"+spanId).html("Invite");
+
+                    }
+                    else {
+                        document.getElementById(checkboxId).checked = true;
+                        $("#"+spanId).addClass("invited");
+                        $("#"+spanId).html("Invited");
+                    }
+                    //console.log(isit);
+                    //alert(elementType);
+                });
+                </script>
+                <ul class="friends-list" data-role="listview" data-divider-theme="b" data-filter="true" data-filter-placeholder="Search a friend">
                     <li data-role="list-divider" role="heading">
                         Friends
                     </li>
                     <?php foreach ($app_friends as $friend) {
-                        echo '<li class="friend">
-                                        <a href="#page1" data-transition="slidedown" class="friend">   
-                                            <img class="friend-pic" src="'.$friend['pic_square'].'" alt="'.$friend['name'].'">
-                                            '.$friend['name'].'
-                                            <span class="ui-li-count">
-                                                Invite
-                                            </span>
-                                        </a>
+                        echo '<li class="friend" data-friend-id="'.$friend['uid'].'">
+                                    <input id="check-'.$friend['uid'].'" class="check-friend"  type="checkbox" name="appfirends[]" value="'.$friend['uid'].'" style="display:none;">
+                                    <a href="#page1" data-transition="slidedown" class="friend">   
+                                        <img class="friend-pic" src="'.$friend['pic_square'].'" alt="'.$friend['name'].'">
+                                        '.$friend['name'].'
+                                        <span id="span-'.$friend['uid'].'" class="ui-li-count">
+                                            Invite
+                                        </span>
+                                    </a>
                             </li>';
                     }?>
                 </ul>
                 <!--</select>-->
-                <input value="Create" onClick="submit_event();" type="button" />
+                <input value="Create" onClick="validate_event();" type="submit" />
             </div>
              </form>
         </div>

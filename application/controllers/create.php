@@ -62,13 +62,13 @@ class Create extends CI_Controller {
 
 	}
 
-	function insert_to_db() {
+	/*function insert_to_db() {
 		
 		$this->load->model('event');
 		$this->event->temp();
 		//$this->load->view('success');//loading success view
 	
-	}
+	}*/
 
 }
 /* End of file welcome.php */

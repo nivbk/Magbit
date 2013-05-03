@@ -19,7 +19,7 @@ class event extends CI_Model
 	}
 
 
-public function insert_into_db()
+public function insert_into_db($owner)
 	{
 		
 		$name = $_POST['name'];

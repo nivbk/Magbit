@@ -11,6 +11,9 @@
         <link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" />
         <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
         <style type="text/css">
+        ul.friends-list {
+            margin-bottom: 8px!important;
+        }
         li.friend {
             min-height: 60px;
         }
@@ -24,30 +27,27 @@
             left: 12px;
             border-radius: 5px;
         }
+        span.invited {
+            color: #000000;
+            background-image: linear-gradient(rgb(205, 241, 205),rgb(144, 192, 135));
+        }
 
-	label.error { 
-	float: left; 
-	color: red; 
-	padding-top: .5em; 
-	vertical-align: top; 
-	font-weight:bold
-	}	
 
         </style>
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
         <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
 
-        <!-- Optional Mousewheel support: http://brandonaaron.net/code/mousewheel/docs -->
-        <script type="text/javascript" src="PATH/TO/YOUR/COPY/OF/jquery.mousewheel.min.js"></script>
-
         <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
         <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
         <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
         <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
-    
-        
-        
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+     
+
+
+   
+
     <script>
         function click_new() {
 
@@ -58,18 +58,52 @@
 
         }
     </script>
-    <script>
-        function submit_event() {
-                $.mobile.changePage( 
-                    "new_event_controller", 
-                    {   
+  <script>
+        function validate_event() {
+
+             $("#new_event").validate({
+                rules: {
+                    name: "required",
+                    date: "required",
+                    time: "required",
+                    due_date: "required",
+                    location: "required",
+                    total: "required"
+                    },
+                    /*password: {
+                        required: true,
+                        minlength: 5
+                    },*/
+                messages: {
+                    name: "required",
+                    date: "required",
+                    time: "required",
+                    due_date: "required",    
+                    location: "required",
+                    total: "required"
+                    },
+                    password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 5 characters long"
+                    
+                    
+                },
+                submitHandler: function(form) {
+                    $.mobile.changePage("new_event_controller", {   
                         transition: "slideup", 
                         type: "post",
                         data: $("form#new_event").serialize() 
-                    } 
-                );
+                    });   
+                }
+            });
+        }
 
-
+        function submit_event() {
+            $.mobile.changePage("new_event_controller", {   
+                transition: "slideup", 
+                type: "post",
+                data: $("form#new_event").serialize() 
+            });   
         }
     </script>
 
