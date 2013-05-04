@@ -19,20 +19,31 @@ class event extends CI_Model
 	}
 
 
-public function insert_into_db($owner)
+	public function insert_into_db($owner)
 	{
-		
+		$date = explode("/",$_POST['date']);
+		$date = strftime("%Y-%m-%d",mktime(0,0,0,$date[1],$date[0],$date[2])); 
+		$due_date = explode("/",$_POST['due_date']);
+		$due_date = strftime("%Y-%m-%d",mktime(0,0,0,$due_date[1],$due_date[0],$due_date[2])); 
 		$name = $_POST['name'];
 		$description = $_POST['description'];
-		$date = $_POST['date'];
+		//$date = $_POST['date'];
 		$time = $_POST['time'];
-		$due_date=$_POST['due_date'];
 		$location = $_POST['location'];
 		$total = $_POST['total'];
-		return ($this->db->query("INSERT INTO events VALUES(
-			'','$name','$description','$date','$time','$due_date','$location','$owner','$payment','$total');"));
+		$invited = $_POST['appfirends'];
+		$payment = 0; //currently only one option in which each user pay fixed amount
+		//ob_start();
+		//var_dump($_POST);
+		//$vdump = ob_get_clean();
+		//log_message('debug', var_export($_POST));
+		//die();
 
-
+		$this->db->query("INSERT INTO events VALUES('','$name','$description','$date','$time','$due_date','$location','$owner','$payment','$total');");
+		$event_id= $this->db->insert_id();
+		foreach ($invited as $friend) {
+			$time = time();
+			$this->db->query("INSERT INTO transactions VALUES('','$event_id','$friend','$total','','$time','0');");
+		}
 	}
-
 }

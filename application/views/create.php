@@ -1,3 +1,4 @@
+
 <!-- Home -->
         <div data-role="page" id="page1">
             <div data-theme="a" data-role="header">
@@ -24,7 +25,7 @@
                         Date
                        </label>
 
-                    <input name="date" id="date" type="date" data-role="datebox" data-options='{"mode": "calbox", "calShowWeek": true}' />
+                    <input name="date" id="date" type="date" data-role="datebox" data-options='{"mode": "calbox", "calShowWeek": true, "overrideDateFormat": "%d/%m/%Y"}' />
                     </div>
                     <div data-role="fieldcontain">
                     <label for="time">
@@ -39,7 +40,7 @@
                         Due Date
                        </label>
 
-                    <input name="due_date" id="due_date" type="date" data-role="datebox" data-options='{"mode": "calbox", "calShowWeek": true}' />
+                    <input name="due_date" id="due_date" type="date" data-role="datebox" data-options='{"mode": "calbox", "calShowWeek": true, "overrideDateFormat": "%d/%m/%Y"}' />
                     </div>
 
                     <div data-role="fieldcontain">

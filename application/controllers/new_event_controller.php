@@ -13,9 +13,9 @@ class new_event_controller extends CI_Controller {
 
 	function index($type="")
 	{	
-		
 		$this->load->model('event');
-		$this->event->insert_into_db();
+		$this->fb_me = $this->fb_ignited->fb_get_me(true);
+		$this->event->insert_into_db($this->fb_me['id']);
 		$this->load->view('success');
 
 	
