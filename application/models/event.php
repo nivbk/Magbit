@@ -33,11 +33,6 @@ class event extends CI_Model
 		$total = $_POST['total'];
 		$invited = $_POST['appfirends'];
 		$payment = 0; //currently only one option in which each user pay fixed amount
-		//ob_start();
-		//var_dump($_POST);
-		//$vdump = ob_get_clean();
-		//log_message('debug', var_export($_POST));
-		//die();
 
 		$this->db->query("INSERT INTO events VALUES('','$name','$description','$date','$time','$due_date','$location','$owner','$payment','$total');");
 		$event_id= $this->db->insert_id();
@@ -45,5 +40,17 @@ class event extends CI_Model
 			$time = time();
 			$this->db->query("INSERT INTO transactions VALUES('','$event_id','$friend','$total','','$time','0');");
 		}
+	}
+
+	public function update_transaction($trans_id,$sum)
+	{
+		$data = $arrayName = array(
+			'total' => $sum,
+			'method' => "1",
+			'updated' => date('Y-m-d'),
+			'status' => "1"
+		 );
+		$this->db->where('id', $trans_id);
+		$this->db->update('transactions', $data); 
 	}
 }

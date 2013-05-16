@@ -46,6 +46,21 @@ class Welcome extends CI_Controller {
 		$content_data['friends'] = $this->fb_ignited->fb_list_friends('uid,name,pic_square',"full");
 		//$params = array('' => 'ronkrasn@gmail.com', );
 		//$this->payments->payment_action('paypal_paymentspro', $params, $config);
+		
+		/*
+		$query = $this->db->query('SELECT * FROM events WHERE owner=');
+
+		foreach ($query->result() as $row)
+		{
+		    echo $row->title;
+		    echo $row->name;
+		    echo $row->email;
+		}
+
+		echo 'Total Results: ' . $query->num_rows(); 
+		*/
+		$content_data['owned_events'] = $this->get_owned_events();
+		$content_data['invited_events'] = $this->get_invited_events();
 		$this->load->view('header', $content_data);
 		$this->load->view('welcome_message', $content_data);
 		$this->load->view('footer', $content_data);  		
@@ -60,6 +75,96 @@ class Welcome extends CI_Controller {
 		// This method will include the facebook credits system.
 		$content_data['message'] = $this->fb_ignited->fb_process_credits();
 		$this->load->view('fb_credits_view', $content_data);
+	}
+
+	function get_owned_events ()
+	{
+		$this->load->database();
+	    $this->db->select('*');
+	    $this->db->select("DATE_FORMAT( date, '%W, %M %d, %Y' ) as date_human",  FALSE );
+	    $this->db->select("DATE_FORMAT( time, '%H:%i') as time_human",      FALSE );
+
+
+	    $this->db->from('events');
+
+	    $this->db->where('owner', $this->fb_me['id'] );
+
+
+	    $query = $this->db->get();
+	    //echo "after query <br />\n";
+
+
+	    if ( $query->num_rows() > 0 )
+	    {
+	        //$row = $query->row_array();
+	        //var_dump($row);
+	        //echo "<br />\n";	
+	        $owned_events = array();
+	        foreach ($query->result_array() as $row)
+			{
+				$owned_events[] = $row;
+				/*
+				echo "row <br />\n";
+			    var_dump($row);
+			    echo "<br />\n";
+			    */
+			}
+	        return $owned_events;
+	    }
+	}
+
+    function get_invited_events ()
+	{
+		$this->load->database();
+	    $this->db->select('*');
+
+	    $this->db->from('transactions');
+
+	    $this->db->where('user_id', $this->fb_me['id'] );
+
+
+	    $query = $this->db->get();
+	    //echo "after query <br />\n";
+
+
+	    if ( $query->num_rows() > 0 )
+	    {
+	        //$row = $query->row_array();
+	        //var_dump($row);
+	        //echo "<br />\n";	
+	        $invited_events = array();
+	        foreach ($query->result_array() as $row)
+			{
+
+				$invited_events[] = $this->load_invited_event($row['event_id']);
+				/*
+				echo "row <br />\n";
+			    var_dump($row);
+			    echo "<br />\n";
+			    */
+			}
+	        return $invited_events;
+	    }
+
+
+	} 
+
+	function load_invited_event($event_id) {
+		$this->load->database();
+	    $this->db->select('*');
+	    $this->db->select("DATE_FORMAT( date, '%W, %M %d, %Y' ) as date_human",  FALSE );
+	    $this->db->select("DATE_FORMAT( date, '%d/%m/%Y' ) as date_pharse",  FALSE );
+	    $this->db->select("DATE_FORMAT( due_date, '%d/%m/%Y' ) as due_date_pharse",  FALSE );
+	    $this->db->select("DATE_FORMAT( time, '%H:%i') as time_human",      FALSE );
+
+	    $this->db->from('events');
+
+	    $this->db->where('id', $event_id );
+
+	    $query = $this->db->get();
+	    
+	    $row = $query->row_array();
+	    return $row;
 	}
 	
 

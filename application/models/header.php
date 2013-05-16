@@ -136,39 +136,17 @@
             //console.log(isit);
             //alert(elementType);
         });
+
+
     </script>
     <script>
         $('a.push-to-pay').live('vclick', function(event) {
             //event.preventDefault();
             var sum = $(this).data('event-sum');
             var eventid = $(this).data('event-id');
-            //alert(eventid);
+            alert(eventid);
             $('span#pay-button').html("Pay: $"+sum.toFixed(2));
-            $('a#pay-link').attr("href", "event/pay/"+eventid);
-        });
-
-        $('a#pay-link').live('vclick', function(event) {
-            event.preventDefault();
-            $.ajax({
-            // method on the server that returns a partial view
-            url: $(this).attr('href'),
-            type: 'GET',
-
-            success: function (result) {
-                $("a#pay-cancel").trigger('click');
-                // add the result to the ad-list
-                //$('#ad-list').append(result);
-                //$('#ad-list').listview('refresh');
-
-                // once again, bind the scroll event
-                //$(window).scroll(bindScroll);
-
-            },
-            error: function () {
-                alert("error");
-            }
-
-        });
+            $('a#pay-link').attr("href", "event/pay"+eventid);
         });
     </script>
  

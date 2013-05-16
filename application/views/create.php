@@ -32,7 +32,7 @@
                         Event Time
                     </label>
 
-                <input name="time" id="time" type="date" data-role="datebox" placeholder="" data-options='{"mode": "timebox", "overrideTimeFormat": 12}'>
+                <input name="time" id="time" type="date" data-role="datebox" placeholder="" data-options='{"mode": "timebox", "overrideTimeFormat": 12,  "overrideTimeOutput":"%k:%M"}'>
                     </div>
 
                  <div data-role="fieldcontain">
@@ -64,26 +64,7 @@
                     <!--<input name="" id="searchinput1" placeholder="" value="Add friend " data-mini="true" type="search" />-->
                 </div>
                 <!--<select name="friends" id="friends" data-native-menu="false" data-mini="true" multiple="multiple">-->
-                <script>
-                $('li.friend').live('vclick', function(event) {
-                    event.preventDefault();
-                    var checkboxId = 'check-'+$(this).data('friend-id');
-                    var spanId = 'span-'+$(this).data('friend-id');
-                    if (document.getElementById(checkboxId).checked) {
-                        document.getElementById(checkboxId).checked = false;
-                        $("#"+spanId).removeClass("invited")
-                        $("#"+spanId).html("Invite");
-
-                    }
-                    else {
-                        document.getElementById(checkboxId).checked = true;
-                        $("#"+spanId).addClass("invited");
-                        $("#"+spanId).html("Invited");
-                    }
-                    //console.log(isit);
-                    //alert(elementType);
-                });
-                </script>
+                
                 <ul class="friends-list" data-role="listview" data-divider-theme="b" data-filter="true" data-filter-placeholder="Search a friend">
                     <li data-role="list-divider" role="heading">
                         Friends
@@ -103,6 +84,7 @@
                 </ul>
                 <!--</select>-->
                 <input value="Create" onClick="validate_event();" type="submit" />
+                <input value="Back" onClick="click_home();" type="button" />
             </div>
              </form>
         </div>

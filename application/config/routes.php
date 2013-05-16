@@ -50,6 +50,9 @@ $route['new_event_controller'] = "new_event_controller";
 $route['create'] = "create";
 $route['success'] = "success";
 $route['event'] = "create_controller";
+$route['event/(:num)'] = "create_controller/event_lookup/$1";
+$route['event/pay/(:num)'] = "create_controller/pay_for_event/$1";
+
 $route['admin/dashboard'] = "admin/admin/index";
 // END AUTHENTICATION LIBRARY ROUTES
 
